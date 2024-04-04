@@ -1,4 +1,4 @@
-function createPromise(min, max) {
+    function createPromise(min, max) {
       const randomTime = Math.floor(Math.random() * (max - min + 1)) + min;
       return new Promise(resolve => {
         setTimeout(() => {
@@ -20,13 +20,13 @@ function createPromise(min, max) {
     loadingCell.setAttribute('colspan', '2');
     loadingCell.textContent = 'Loading...';
     loadingRow.appendChild(loadingCell);
-    document.getElementById('table-body').appendChild(loadingRow);
+    document.getElementById('output').appendChild(loadingRow);
 
     // Using Promise.all to wait for all promises to resolve
     Promise.all(promises)
       .then(results => {
         // Removing loading text
-        document.getElementById('table-body').removeChild(loadingRow);
+        document.getElementById('output').removeChild(loadingRow);
 
         // Populating the table with resolved values
         results.forEach((time, index) => {
@@ -37,7 +37,7 @@ function createPromise(min, max) {
           column2.textContent = `${time}`;
           row.appendChild(column1);
           row.appendChild(column2);
-          document.getElementById('table-body').appendChild(row);
+          document.getElementById('output').appendChild(row);
         });
 
         // Calculating total time taken
@@ -49,7 +49,7 @@ function createPromise(min, max) {
         totalColumn2.textContent = `${totalTime.toFixed(3)}`;
         totalRow.appendChild(totalColumn1);
         totalRow.appendChild(totalColumn2);
-        document.getElementById('table-body').appendChild(totalRow);
+        document.getElementById('output').appendChild(totalRow);
       })
       .catch(error => {
         console.error('An error occurred:', error);
