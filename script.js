@@ -16,6 +16,7 @@
 
     // Adding a row with loading text
     const loadingRow = document.createElement('tr');
+	loadingRow..setAttribute("id", "loading");
     const loadingCell = document.createElement('td');
     loadingCell.setAttribute('colspan', '2');
     loadingCell.textContent = 'Loading...';
